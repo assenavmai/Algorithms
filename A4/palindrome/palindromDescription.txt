@@ -1,0 +1,30 @@
+a) ACGACAACGGTAGCAGACGATGACATACGA
+
+Output:
+
+GTAGCAGACGATG
+Length of palindrome: 13
+
+b) ACGCAGTAACCGCTCAATGCAGC
+
+Ouput:
+
+ACGCA
+Length of palindrome: 5
+
+c) TCTATAGTCTACCTCACAGTCGATTTT
+
+
+Output:
+
+TTTT
+Length of palindrome: 4
+
+
+Description:
+
+At first I tried to implement a O(n^2) algorithm but realized shortly after it was not correct. So after some research on this issue, I saw many algoirthms but the one that made the most sense to me was the Manacher algoirthm. This implementation can run up to O(n) to my knowledge. First, it processes the string by placing a symbol inbetween each character, I chose a '#'. This is so that no matter if the string is of even or odd length, the algorithm will be able to handle it. There is a way to do it without this processing step but it had a bit more brain work that I could not wrap my head around. Essentially, you want there to be an odd length so that you can keep track of the center of the string. The center is your mirror where you can find i and i'. 
+
+You have another array, that keeps track of the center and the expansion area from the center. This holds integers where the start of the longest palidrome to the end. You can use such values as array indicies to the original string.
+
+For the O(n) implementation you fill in the array until you reach the center. Then you use the same expansion size and populate until you reach the right mark. This allows symmetry in the palindrome.
